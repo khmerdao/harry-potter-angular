@@ -1,0 +1,39 @@
+<p>Liste de characters : </p>
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <!-- <td scope="col">{{ "id" | uppercase }}</td> -->
+            <td scope="col">{{ "Name" | uppercase}}</td>
+            <!-- <td scope="col">{{ "alternate_names" | uppercase}}</td> -->
+            <!-- <td scope="col">{{ "species" | uppercase}}</td> -->
+            <td scope="col">{{ "gender" | uppercase}}</td>
+            <td scope="col">{{ "House" | uppercase}}</td>
+            <!-- <td scope="col">{{ "dateOfBirth" | uppercase}}</td>
+            <td scope="col">{{ "yearOfBirth" | uppercase}}</td> -->
+            <!-- <td scope="col">{{ "Image" | uppercase}}</td> -->
+            <td scope="col">{{ "Actions" | uppercase}}</td>
+        </tr>
+    </thead>
+    <tbody class="">
+        @for (character of characters; track character.id) {
+            <tr>
+                <!-- <td>{{ character?.id || "unknown" }}</td> -->
+                <td>{{ character?.name || "unknown" }}</td>
+                <!-- <td>{{ character?.alternate_names || "unknown" }}</td> -->
+                <!-- <td>{{ character?.species || "unknown" }}</td> -->
+                <td>{{ character?.gender || "unknown" }}</td>
+                <td>{{ character?.house || "unknown" }}</td>
+                <!-- <td>{{ character?.dateOfBirth || "unknown" }}</td> -->
+                <!-- <td>{{ character?.yearOfBirth || "unknown" }}</td> -->
+                <!-- <td>
+                    <a href="{{ character?.image || 'https://placehold.co/70x100' }}">
+                        <img src="{{ character?.image || 'https://placehold.co/70x100' }}" alt="" srcset="" width="70px" height="100px">
+                    </a>
+                </td> -->
+                <td></td>
+            </tr>
+        } @empty {
+            <tr><td colspan="9">There are no characters.</td></tr>
+        }
+    </tbody>
+</table>
