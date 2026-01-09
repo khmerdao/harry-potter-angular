@@ -3,6 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Character } from '../models/character.model';
 import { environment } from '../../environments/environment';
+import { Staff } from '../models/staff.model';
+import { Student } from '../models/student.model';
+import { Spell } from '../models/spell.model';
 
 @Injectable({
   providedIn: 'root',
@@ -21,13 +24,13 @@ export class ApiEndpointsService{
   }
 
   // @TODO Retrieve all Hogwarts students
-  getAllStudents(): Observable<Character[]> {
-    return this.httpClient.get<Character[]>(`${environment.baseUrl}/characters/students`);
+  getAllStudents(): Observable<Student[]> {
+    return this.httpClient.get<Student[]>(`${environment.baseUrl}/characters/students`);
   }
 
   // @TODO Access information about Hogwarts faculty and staff
-  getStaff(): Observable<Character[]> {
-    return this.httpClient.get<Character[]>(`${environment.baseUrl}/characters/staff`);
+  getStaff(): Observable<Staff[]> {
+    return this.httpClient.get<Staff[]>(`${environment.baseUrl}/characters/staff`);
   }
 
   // @TODO Find characters from a specific Hogwarts house
@@ -36,7 +39,7 @@ export class ApiEndpointsService{
   }
 
   // @TODO Discover all magical spells and their incantations
-  getSpell(): Observable<Character[]> {
-    return this.httpClient.get<Character[]>(`${environment.baseUrl}/spells`);
+  getSpell(): Observable<Spell[]> {
+    return this.httpClient.get<Spell[]>(`${environment.baseUrl}/spells`);
   }
 }

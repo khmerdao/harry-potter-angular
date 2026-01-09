@@ -1,0 +1,28 @@
+<p>Nombre d'éléments: {{ staffCollection().length }}</p>
+
+<div class="accordion" id="accordionExample">
+
+@for (item of staffCollection(); track $index; let isFirst = $first) {
+    @let collapseId = 'collapse' + $index;
+    @let target = '#' + collapseId;
+    @let isDisplay = ($first) ? 'show' : '';
+
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" 
+                data-bs-toggle="collapse" 
+                [attr.data-bs-target]="target" 
+                [attr.aria-expanded]="isFirst" 
+                [attr.aria-controls]="collapseId">
+                {{ item?.name }}
+            </button>
+        </h2>
+        <div id="{{ collapseId }}" class="accordion-collapse collapse {{ isDisplay }}" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <img src="{{ item?.image }}" alt="Image de {{ item?.name }}">
+            </div>
+        </div>
+    </div>
+}
+
+</div>

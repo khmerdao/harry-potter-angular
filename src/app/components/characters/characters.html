@@ -1,4 +1,11 @@
-<app-characters-list 
+<!-- <app-characters-list 
     [characters]="characters" 
+    (characterClicked)="getCharacter($event)" 
+/> -->
+
+<!-- Avec Signal -->
+{{ section() }}
+<app-characters-list 
+    [characters]="characters()" 
     (characterClicked)="getCharacter($event)" 
 />

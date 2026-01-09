@@ -1,17 +1,33 @@
 import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { Character } from '../../../models/character.model';
 import { CommonModule } from '@angular/common';
+import { CharacterDetails } from '../character-details/character-details';
 
 @Component({
   selector: 'app-characters-list',
-  imports: [CommonModule],
+  imports: [CommonModule, CharacterDetails],
   templateUrl: './characters-list.html',
   styleUrl: './characters-list.scss',
 })
 export class CharactersList {
-  @Input() characters!: Character[];
-  // characters = input.required();
+  // @Input() characters!: Character[];
+  // Mode Signal
+  characters = input.required<Character[]>();
+
   @Output() characterClicked = new EventEmitter<Character>();
+
+  selectedCharacter: Character | null = null;
+  showModal = false;
+
+  onCharacterClick(character: Character): void {
+    this.selectedCharacter = character;
+    this.showModal = true;
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+    this.selectedCharacter = null;
+  }
 }
 
 // 1. Créer un composant enfant au composant characters qui va s'appeler characters-list.
