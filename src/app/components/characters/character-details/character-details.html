@@ -1,13 +1,47 @@
-<div class="card" style="width: 18rem;">
-  <img [src]="character.image || 'https://placehold.co/286x180'" class="card-img-top" alt="{{ character.name }}">
-  <div class="card-body">
-    <h5 class="card-title">{{ character.name }}</h5>
-    <p class="card-text">
-      <strong>Species:</strong> {{ character.species || 'Unknown' }}<br>
-      <strong>Gender:</strong> {{ character.gender || 'Unknown' }}<br>
-      <strong>House:</strong> {{ character.house || 'Unknown' }}<br>
-      <strong>Date of Birth:</strong> {{ character.dateOfBirth || 'Unknown' }}<br>
-      <strong>Wizard:</strong> {{ character.wizard ? 'Yes' : 'No' }}
-    </p>
+<div class="character-card">
+  <div class="character-image-wrapper">
+    <img [src]="character.image || 'https://placehold.co/300x400/1a1a2e/c9a227?text=?'" 
+         class="character-image" 
+         alt="{{ character.name }}">
+    <div class="character-image-overlay"></div>
+    <div class="character-house-badge" [attr.data-house]="character.house?.toLowerCase()">
+      {{ character.house || 'Unknown' }}
+    </div>
+  </div>
+  <div class="character-info">
+    <h3 class="character-name">{{ character.name }}</h3>
+    <div class="character-details">
+      <div class="detail-item">
+        <span class="detail-icon">🧬</span>
+        <span class="detail-label">Espèce</span>
+        <span class="detail-value">{{ character.species || 'Inconnue' }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-icon">⚥</span>
+        <span class="detail-label">Genre</span>
+        <span class="detail-value">{{ character.gender || 'Inconnu' }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-icon">📅</span>
+        <span class="detail-label">Naissance</span>
+        <span class="detail-value">{{ character.dateOfBirth || 'Inconnue' }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-icon">🪄</span>
+        <span class="detail-label">Sorcier</span>
+        <span class="detail-value">{{ character.wizard ? 'Oui' : 'Non' }}</span>
+      </div>
+    </div>
+    <div class="character-wand" *ngIf="character.wand">
+      <h4 class="wand-title">🪄 Baguette</h4>
+      <p class="wand-info">Bois: {{ character?.wand?.wood || 'Inconnu' }}</p>
+      <p class="wand-info">Noyau: {{ character?.wand?.core || 'Inconnu' }}</p>
+      <p class="wand-info">Longueur: {{ character?.wand?.length ? character?.wand?.length + ' pouces' : 'Inconnue' }}</p>
+    </div>
+  </div>
+  <div class="character-sparkles">
+    <span class="sparkle">✦</span>
+    <span class="sparkle">✧</span>
+    <span class="sparkle">✦</span>
   </div>
 </div>

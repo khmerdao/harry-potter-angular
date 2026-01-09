@@ -1,59 +1,85 @@
-<p>Liste de characters : </p>
-<table class="table table-dark table-striped">
-    <thead>
+<div class="characters-container">
+  <div class="characters-header">
+    <h2 class="characters-title">📜 Grimoire des Personnages</h2>
+    <p class="characters-subtitle">Découvrez les sorciers et créatures magiques du monde de Harry Potter</p>
+  </div>
+
+  <div class="magic-scroll-wrapper">
+    <table class="magic-table">
+      <thead>
         <tr>
-            <!-- <td scope="col">{{ "id" | uppercase }}</td> -->
-            <td scope="col">{{ "Name" | uppercase}}</td>
-            <!-- <td scope="col">{{ "alternate_names" | uppercase}}</td> -->
-            <!-- <td scope="col">{{ "species" | uppercase}}</td> -->
-            <td scope="col">{{ "gender" | uppercase}}</td>
-            <td scope="col">{{ "House" | uppercase}}</td>
-            <!-- <td scope="col">{{ "dateOfBirth" | uppercase}}</td>
-            <td scope="col">{{ "yearOfBirth" | uppercase}}</td> -->
-            <!-- <td scope="col">{{ "Image" | uppercase}}</td> -->
-            <td scope="col">{{ "Actions" | uppercase}}</td>
+          <th class="th-name">
+            <span class="th-icon">🧙</span>
+            <span class="th-text">Nom</span>
+          </th>
+          <th class="th-gender">
+            <span class="th-icon">⚥</span>
+            <span class="th-text">Genre</span>
+          </th>
+          <th class="th-house">
+            <span class="th-icon">🏰</span>
+            <span class="th-text">Maison</span>
+          </th>
+          <th class="th-actions">
+            <span class="th-icon">✨</span>
+            <span class="th-text">Actions</span>
+          </th>
         </tr>
-    </thead>
-    <tbody class="">
-        <!-- @for (character of characters; track character.id) { -->
-         <!-- en mode Signal -->
+      </thead>
+      <tbody>
         @for (character of characters(); track character.id) {
-            <tr>
-                <!-- <td>{{ character?.id || "unknown" }}</td> -->
-                <td>{{ character?.name || "unknown" }}</td>
-                <!-- <td>{{ character?.alternate_names || "unknown" }}</td> -->
-                <!-- <td>{{ character?.species || "unknown" }}</td> -->
-                <td>{{ character?.gender || "unknown" }}</td>
-                <td>{{ character?.house || "unknown" }}</td>
-                <!-- <td>{{ character?.dateOfBirth || "unknown" }}</td> -->
-                <!-- <td>{{ character?.yearOfBirth || "unknown" }}</td> -->
-                <!-- <td>
-                    <a href="{{ character?.image || 'https://placehold.co/70x100' }}">
-                        <img src="{{ character?.image || 'https://placehold.co/70x100' }}" alt="" srcset="" width="70px" height="100px">
-                    </a>
-                </td> -->
-                <td><button (click)="onCharacterClick(character)" class="btn btn-warning">Voir</button></td>
-            </tr>
+          <tr class="character-row" [attr.data-house]="character.house?.toLowerCase()">
+            <td class="td-name">
+              <div class="character-cell">
+                <span class="character-name">{{ character?.name || 'Inconnu' }}</span>
+              </div>
+            </td>
+            <td class="td-gender">
+              <span class="gender-badge" [attr.data-gender]="character?.gender?.toLowerCase()">
+                {{ character?.gender || 'Inconnu' }}
+              </span>
+            </td>
+            <td class="td-house">
+              <span class="house-badge" [attr.data-house]="character.house?.toLowerCase()">
+                {{ character?.house || 'Sans maison' }}
+              </span>
+            </td>
+            <td class="td-actions">
+              <button (click)="onCharacterClick(character)" class="btn-magic">
+                <span class="btn-icon">🔮</span>
+                <span class="btn-text">Voir</span>
+              </button>
+            </td>
+          </tr>
         } @empty {
-            <tr><td colspan="9">There are no characters.</td></tr>
+          <tr class="empty-row">
+            <td colspan="4">
+              <div class="empty-message">
+                <span class="empty-icon">📕</span>
+                <span class="empty-text">Le grimoire est vide... aucune créature magique trouvée.</span>
+              </div>
+            </td>
+          </tr>
         }
-    </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <!-- Modal for character details -->
 @if (showModal && selectedCharacter) {
-    <div class="modal fade show d-block" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">{{ selectedCharacter.name }}</h5>
-                    <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
-                </div>
-                <div class="modal-body m-auto">
-                    <app-character-details [character]="selectedCharacter"></app-character-details>
-                </div>
-            </div>
-        </div>
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeModal()">✕</button>
+      <div class="modal-glow"></div>
+      <div class="modal-content">
+        <app-character-details [character]="selectedCharacter"></app-character-details>
+      </div>
+      <div class="modal-sparkles">
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+      </div>
     </div>
-    <div class="modal-backdrop fade show"></div>
+  </div>
 }

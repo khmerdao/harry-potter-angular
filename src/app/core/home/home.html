@@ -1,116 +1,249 @@
-<div class="min-vh-100 bg-dark text-white">
+<div class="hp-home">
+  <!-- Animated Background -->
+  <div class="magical-particles">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+  </div>
+  
   <!-- Hero Section -->
-  <div class="container-fluid bg-primary py-5">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <h1 class="display-4 fw-bold mb-4">Welcome to Hogwarts</h1>
-          <p class="lead mb-4">
-            Discover the magical world of Harry Potter. Explore characters, spells, and the rich history of the wizarding world.
-          </p>
-          <div class="d-flex gap-3">
-            <a routerLink="/characters" class="btn btn-light btn-lg">
-              <i class="fas fa-users me-2"></i>View Characters
-            </a>
-            <a routerLink="/staff" class="btn btn-outline-light btn-lg">
-              <i class="fas fa-graduation-cap me-2"></i>Meet the Staff
-            </a>
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative">
+      <div class="row align-items-center min-vh-75">
+        <div class="col-lg-6 text-white">
+          <div class="hero-content">
+            <div class="hogwarts-logo mb-4">
+              <svg viewBox="0 0 100 100" class="crest-svg">
+                <defs>
+                  <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffd700"/>
+                    <stop offset="50%" style="stop-color:#ffec8b"/>
+                    <stop offset="100%" style="stop-color:#ffd700"/>
+                  </linearGradient>
+                </defs>
+                <!-- Simplified Hogwarts Crest -->
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#goldGradient)" stroke-width="2"/>
+                <path d="M50 10 L50 90 M10 50 L90 50" stroke="url(#goldGradient)" stroke-width="1" opacity="0.5"/>
+                <text x="50" y="55" text-anchor="middle" fill="url(#goldGradient)" font-size="8" font-weight="bold">H</text>
+              </svg>
+            </div>
+            <h1 class="hero-title">
+              <span class="title-main">Hogwarts</span>
+              <span class="title-sub">School of Witchcraft and Wizardry</span>
+            </h1>
+            <p class="hero-quote">
+              "In our world, there is a school where young witches and wizards learn the magical arts..."
+            </p>
+            <div class="hero-actions">
+              <a routerLink="/characters" class="btn btn-hogwarts btn-lg">
+                <span class="btn-icon">⚡</span>
+                Explore Characters
+              </a>
+              <a routerLink="/staff" class="btn btn-hogwarts-outline btn-lg">
+                <span class="btn-icon">📚</span>
+                Meet the Staff
+              </a>
+            </div>
           </div>
         </div>
         <div class="col-lg-6 text-center">
-          <img src="https://via.placeholder.com/500x300/6c757d/ffffff?text=Hogwarts" alt="Hogwarts Castle" class="img-fluid rounded shadow">
+          <div class="hero-visual">
+            <div class="floating-castle">
+              <svg viewBox="0 0 400 300" class="castle-svg">
+                <defs>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <!-- Simplified Hogwarts Castle Silhouette -->
+                <g filter="url(#glow)" fill="#1a1a2e">
+                  <rect x="100" y="200" width="200" height="80"/>
+                  <rect x="150" y="150" width="100" height="50"/>
+                  <rect x="80" y="180" width="40" height="100" rx="20"/>
+                  <rect x="280" y="180" width="40" height="100" rx="20"/>
+                  <polygon points="150,100 200,150 250,100"/>
+                  <polygon points="80,140 100,180 120,140"/>
+                  <polygon points="280,140 300,180 320,140"/>
+                  <rect x="185" y="220" width="30" height="60" fill="#2d2d44"/>
+                </g>
+              </svg>
+            </div>
+            <div class="stars">
+              <span class="star star-1">✦</span>
+              <span class="star star-2">✧</span>
+              <span class="star star-3">✦</span>
+              <span class="star star-4">✧</span>
+              <span class="star star-5">✦</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="scroll-indicator">
+      <span>↓</span>
+      <span class="scroll-text">Begin Your Journey</span>
+    </div>
+  </section>
+
+  <!-- Houses Section -->
+  <section class="houses-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">The Four Houses</h2>
+        <p class="section-subtitle">Where will the Sorting Hat place you?</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-3 col-sm-6">
+          <a routerLink="/houses" class="house-card gryffindor">
+            <div class="house-icon">
+              <span class="house-symbol">🦁</span>
+            </div>
+            <h3>Gryffindor</h3>
+            <p class="house-values">Courage, bravery, determination</p>
+            <div class="house-colors">
+              <span class="color-dot red"></span>
+              <span class="color-dot gold"></span>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a routerLink="/houses" class="house-card slytherin">
+            <div class="house-icon">
+              <span class="house-symbol">🐍</span>
+            </div>
+            <h3>Slytherin</h3>
+            <p class="house-values">Ambition, cunning, leadership</p>
+            <div class="house-colors">
+              <span class="color-dot green"></span>
+              <span class="color-dot silver"></span>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a routerLink="/houses" class="house-card ravenclaw">
+            <div class="house-icon">
+              <span class="house-symbol">🦅</span>
+            </div>
+            <h3>Ravenclaw</h3>
+            <p class="house-values">Wisdom, learning, wit</p>
+            <div class="house-colors">
+              <span class="color-dot blue"></span>
+              <span class="color-dot bronze"></span>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a routerLink="/houses" class="house-card hufflepuff">
+            <div class="house-icon">
+              <span class="house-symbol">🦡</span>
+            </div>
+            <h3>Hufflepuff</h3>
+            <p class="house-values">Loyalty, fair play, patience</p>
+            <div class="house-colors">
+              <span class="color-dot yellow"></span>
+              <span class="color-dot black"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Features Section -->
-  <div class="container py-5">
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card bg-secondary text-white h-100 border-0 shadow">
-          <div class="card-body text-center">
-            <i class="fas fa-magic fa-3x text-warning mb-3"></i>
-            <h5 class="card-title">Magical Characters</h5>
-            <p class="card-text">
-              Meet wizards, witches, and magical creatures from the Harry Potter universe.
-            </p>
-            <a routerLink="/characters" class="btn btn-warning">Explore Characters</a>
-          </div>
-        </div>
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Explore the Wizarding World</h2>
+        <p class="section-subtitle">Discover magical beings, learn powerful spells, and meet legendary wizards</p>
       </div>
-      <div class="col-md-4">
-        <div class="card bg-secondary text-white h-100 border-0 shadow">
-          <div class="card-body text-center">
-            <i class="fas fa-graduation-cap fa-3x text-info mb-3"></i>
-            <h5 class="card-title">Hogwarts Staff</h5>
-            <p class="card-text">
-              Learn about the professors and staff who teach at the School of Witchcraft and Wizardry.
-            </p>
-            <a routerLink="/staff" class="btn btn-info">View Staff</a>
-          </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <a routerLink="/characters" class="feature-card">
+            <div class="feature-icon">
+              <span>🧙</span>
+            </div>
+            <h3>Magical Characters</h3>
+            <p>Meet wizards, witches, and magical creatures from the Harry Potter universe</p>
+            <span class="feature-link">Discover →</span>
+          </a>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card bg-secondary text-white h-100 border-0 shadow">
-          <div class="card-body text-center">
-            <i class="fas fa-hat-wizard fa-3x text-success mb-3"></i>
-            <h5 class="card-title">Magical Spells</h5>
-            <p class="card-text">
-              Discover powerful spells and incantations used in the wizarding world.
-            </p>
-            <button class="btn btn-success" disabled>Coming Soon</button>
-          </div>
+        <div class="col-md-4">
+          <a routerLink="/students" class="feature-card">
+            <div class="feature-icon">
+              <span>🎓</span>
+            </div>
+            <h3>Students</h3>
+            <p>Learn about the students who walk the halls of Hogwarts School</p>
+            <span class="feature-link">Explore →</span>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a routerLink="/spells" class="feature-card">
+            <div class="feature-icon">
+              <span>✨</span>
+            </div>
+            <h3>Magical Spells</h3>
+            <p>Master powerful spells and incantations of the wizarding world</p>
+            <span class="feature-link">Learn →</span>
+          </a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Quote Section -->
-  <div class="bg-secondary py-5">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <blockquote class="blockquote">
-            <p class="mb-4 fs-4">
-              "It does not do to dwell on dreams and forget to live."
-            </p>
-            <footer class="blockquote-footer text-white">
-              Albus Dumbledore
-            </footer>
-          </blockquote>
-        </div>
-      </div>
+  <section class="quote-section">
+    <div class="quote-container">
+      <div class="quote-decoration left">✦</div>
+      <blockquote class="hogwarts-quote">
+        <p>"It does not do to dwell on dreams and forget to live."</p>
+        <footer>— Albus Dumbledore</footer>
+      </blockquote>
+      <div class="quote-decoration right">✦</div>
     </div>
-  </div>
+  </section>
 
   <!-- Stats Section -->
-  <div class="container py-5">
-    <div class="row text-center g-4">
-      <div class="col-md-3">
-        <div class="bg-primary rounded p-4">
-          <h2 class="display-4 fw-bold text-warning">400+</h2>
-          <p class="mb-0">Characters</p>
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-count="400">0</div>
+          <div class="stat-label">Characters</div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="bg-success rounded p-4">
-          <h2 class="display-4 fw-bold text-light">4</h2>
-          <p class="mb-0">Houses</p>
+        <div class="stat-item">
+          <div class="stat-number" data-count="4">0</div>
+          <div class="stat-label">Houses</div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="bg-info rounded p-4">
-          <h2 class="display-4 fw-bold text-dark">100+</h2>
-          <p class="mb-0">Spells</p>
+        <div class="stat-item">
+          <div class="stat-number" data-count="100">0</div>
+          <div class="stat-label">Spells</div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="bg-warning rounded p-4">
-          <h2 class="display-4 fw-bold text-dark">7</h2>
-          <p class="mb-0">Books</p>
+        <div class="stat-item">
+          <div class="stat-number" data-count="7">0</div>
+          <div class="stat-label">Books & Films</div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Footer Call-to-Action -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Your Magical Journey Awaits</h2>
+        <p>Step through the doors of Hogwarts and enter a world of wonder</p>
+        <a routerLink="/characters" class="btn btn-hogwarts btn-lg">
+          Start Exploring
+        </a>
+      </div>
+    </div>
+  </section>
 </div>
